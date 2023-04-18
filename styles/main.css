@@ -1,0 +1,107 @@
+html{
+    background: #E7E5E1;
+    color: #000000;
+}
+
+h1, h2, h3{
+    /* margin: 0; */
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+.mainContaienr{
+    width: 100vw;
+    height: auto;
+    margin: 0 20px;
+}
+
+.header{
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid #000;
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;
+}
+
+
+
+
+
+
+
+.startButton{
+    display: block;
+    background: #FFBE85;
+    color: #21253C;
+    border: none;
+    font-size: 46px;
+    padding: 8px 31px;
+    border-radius: 15px;
+    margin: 0 auto;
+}
+
+.dataBlock{
+    display: flex;
+    flex-direction: row;
+}
+
+.dataTitle{
+    text-align: center;
+}
+
+
+
+
+
+
+
+footer{
+    background: #FFBE85;
+}
+
+.footerContainer{
+    display: flex;
+    flex-direction: column;
+}
+
+.topFooterContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.containerTitle{
+    width: 50vw;
+    text-align: center;
+}
+
+.containerContent{
+    width: 50vw;
+}
+
+.contactButton{
+    display: block;
+    background: #21253C;
+    color: #FFBE85;
+    border: none;
+    font-size: 24px;
+    padding: 8px 31px;
+    border-radius: 15px;
+    margin: 0 auto;
+}
+
+.footerFooter{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 180px;
+    margin-top: 50px;
+}
+
+.footerSeparator{
+    width: 1px;
+    height: 100%;
+    background: #21253C;
+}
