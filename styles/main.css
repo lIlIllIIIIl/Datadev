@@ -1,10 +1,32 @@
+@font-face{
+    font-family: "LeMurmure";
+    src: url("../fonts/Le_Murmure-Regular_web.otf");
+}
+
+@font-face {
+    font-family: "Basier";
+    src: url("../fonts/basiersquaremono-regular-webfont.woff");
+}
+
 html{
     background: #E7E5E1;
     color: #000000;
 }
 
-h1, h2, h3{
-    /* margin: 0; */
+h1, h2{
+    font-family: "LeMurmure";
+}
+
+h3{
+    font-family: "Basier";
+}
+
+h1, h2{
+    font-size: 98px;
+}
+
+h3{
+    font-size: 66px;
 }
 
 button:hover{
@@ -24,11 +46,6 @@ button:hover{
     border-left: 1px solid #000;
     border-right: 1px solid #000;
 }
-
-
-
-
-
 
 
 .startButton{
