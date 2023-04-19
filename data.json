@@ -1,0 +1,40 @@
+{
+    "Fournisseurs": {
+        "CO2": 18,
+        "impact": 10,
+        "émission": 29,
+        "vert/verte": 12,
+        "électricité": 12,
+        "gaz": 46,
+        "polluer/pollution": 0,
+        "environnement": 20,
+        "chimique": 2,
+        "radioactif": 0,
+        "déchet": 4,
+        "carbone": 43,
+        "renouvelable": 4,
+        "climat": 25,
+        "plastique": 0,
+        "signe de négation": 1,
+        "graphiques/Tableaux": 1
+    },
+    "Articles": {
+        "CO2": 61,
+        "impact": 15,
+        "émission": 63,
+        "vert/verte": 6,
+        "électricité": 83,
+        "gaz": 59,
+        "polluer/pollution": 21,
+        "environnement": 31,
+        "chimique": 2,
+        "radioactif": 4,
+        "déchet": 3,
+        "carbone": 56,
+        "renouvelable": 42,
+        "climat": 84,
+        "plastique": 0,
+        "signe de négation": 17,
+        "Graphiques/Tableaux": 8.2
+    }
+}

@@ -11,32 +11,40 @@
 html{
     background: #E7E5E1;
     color: #000000;
+    font-family: Basier;
+}
+
+body{
+    margin: 0;
 }
 
 h1, h2{
     font-family: "LeMurmure";
+        font-size: 98px;
+
 }
 
 h3{
     font-family: "Basier";
+        font-size: 44px;
 }
 
-h1, h2{
-    font-size: 98px;
+h4{
+    font-family: "Basier";
+    font-size: 36px;
 }
 
-h3{
-    font-size: 66px;
+p{
+    font-size: 14px;
 }
 
 button:hover{
     cursor: pointer;
 }
 
-.mainContaienr{
-    width: 100vw;
+.mainContainer{
     height: auto;
-    margin: 0 20px;
+    margin: 0 26px;
 }
 
 .header{
@@ -45,15 +53,27 @@ button:hover{
     border-bottom: 1px solid #000;
     border-left: 1px solid #000;
     border-right: 1px solid #000;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
 
+.menu{
+    margin-top: 0;
+}
+
+.projectPres{
+    border: 1px solid #000000;
+    border-radius: 20px;
+    margin: 80px 0;
+    padding: 18px;
+}
 
 .startButton{
     display: block;
     background: #FFBE85;
     color: #21253C;
     border: none;
-    font-size: 46px;
+    font-size: 30px;
     padding: 8px 31px;
     border-radius: 15px;
     margin: 0 auto;
@@ -62,13 +82,25 @@ button:hover{
 .dataBlock{
     display: flex;
     flex-direction: row;
+    border: 1px solid #000000;
+    padding: 16px;
+}
+
+.dataBlockImg{
+    max-width: 40vw;
+}
+
+.dataBlockContent{
+    padding: 0 20px;
 }
 
 .dataTitle{
     text-align: center;
 }
 
-
+.dataBlockTitle{
+    height: 640px;
+}
 
 
 
@@ -76,6 +108,10 @@ button:hover{
 
 footer{
     background: #FFBE85;
+    margin-top: 200px;
+    border: 1px solid #000000;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 }
 
 .footerContainer{
@@ -96,6 +132,13 @@ footer{
 
 .containerContent{
     width: 50vw;
+    text-align: center;
+}
+
+.contactContent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .contactButton{
@@ -112,7 +155,7 @@ footer{
 .footerFooter{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     height: 180px;
     margin-top: 50px;
 }
