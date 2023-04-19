@@ -38,7 +38,7 @@ p{
     font-size: 14px;
 }
 
-button:hover{
+button:hover, a:hover{
     cursor: pointer;
 }
 
@@ -68,12 +68,17 @@ button:hover{
     padding: 18px;
 }
 
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+}
+
 .startButton{
-    display: block;
+    display: inline-block;
     background: #FFBE85;
     color: #21253C;
     border: none;
-    font-size: 30px;
+    font-size: 24px;
     padding: 8px 31px;
     border-radius: 15px;
     margin: 0 auto;
@@ -102,7 +107,47 @@ button:hover{
     height: 640px;
 }
 
+.doughnut {
+    padding: 2px 4% 4%;
+    border: 1px solid black;
+    max-width: 60%;
+}
 
+.doughnut h4 {
+    text-align: center;
+}
+
+.word-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border: 1px solid black;
+    padding: 4%;
+}
+
+.word-cloud span {
+    margin: 5px;
+}
+
+.bar-charts {
+    display: flex;
+    justify-content: space-between;
+    gap: 72px;
+    margin: 135px 0;
+}
+
+.bar-charts canvas {
+    height: 400px;
+    max-width: 50%;
+    border: 1px solid black;
+    padding: 2%;
+    border-radius: 10px;
+}
+
+canvas {
+    max-width: 800px;
+    max-height: 400px;
+}
 
 
 

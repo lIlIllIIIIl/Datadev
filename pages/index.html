@@ -16,32 +16,58 @@
 
         <div class="projectPres">
             <h3>The Project</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur similique et illum nobis unde esse autem! Aliquid odit placeat blanditiis dolorum autem ratione! Pariatur iste officiis voluptatum velit. Laudantium, eaque?
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodi, ea illo explicabo earum error ducimus placeat, temporibus libero magnam molestias nam corrupti excepturi non? Non aspernatur suscipit deserunt numquam amet.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, iusto facere eaque magnam natus quia nisi placeat eius earum laboriosam consequuntur assumenda unde iste dolorum quae eligendi sapiente aut. Rerum!
+            <p>
+                We analyzed how French digital media outlets wrote and displayed information about the origin and processing of electricity. Many maps and photographs were used to illustrate the journalist's point, while detailed graphics were less common.
             </p>
-            <button class="startButton">Let's start</button>
+            <p>
+                For our benchmark, we looked at various sources, from word clouds commonly used to map the links between Twitch streamers, to Dr. Tufte's pie charts. If we take a moment to examine these graphs, we may notice a shimmering or vibrating effect known as the Moiré Effect. Replacing patterns with shading or colors simplifies the graphs and makes them much cleaner.
+            </p>
+            <p>
+                When embarking on our project, we faced the challenge of sourcing relevant data for our analysis. As we were interested in analyzing the semantic text of articles discussing the origin of electricity in France, we quickly realized that there were no existing automated methods that could accurately perform this task.
+            </p>
+            <p>
+                Although we initially considered automating data scraping, we found that the complexity of the task made it difficult to implement in practice.
+            </p>
+            <div class="buttonContainer">
+                <a class="startButton" href="#data">Let's start</a>
+            </div>
         </div>
         <div class="dataBlock">
             <img class="dataBlockImg" src="../images/img1.png">
             <div class="dataBlockContent">
-                <h2 class="dataTitle">DATA</h2>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum sapiente error labore, natus, harum dicta eaque pariatur sunt nemo earum doloribus? Necessitatibus nisi alias aut aspernatur amet totam culpa voluptatem?</p>
+                <h2 class="dataTitle" id="data">DATA</h2>
+                <p>
+                    As a result, we decided to manually process the data by analyzing more than thirty articles. To ensure consistency and avoid biases, we pre-defined around forty key words to analyze. This approach allowed us to gain a deeper understanding of the opinions and text structures presented in each article.
+                </p>
+                <p>
+                    Overall, our manual data processing approach enabled us to identify trends and insights that would have been challenging to obtain through automated methods alone.
+                </p>
             </div>
         </div>
         <div>
-            GRAPH
+            <div class="doughnut">
+                <h4>Negative/positive reaction to the origin of electricity by the French media</h4>
+                <canvas id="doughnut-chart"></canvas>
+            </div>
         </div>
-        <div>IMG</div>
-        <div>
-            <div>GRAPH 1</div>
-            <div>GRAPH 2</div>
+        <div class="word-cloud" id="word-cloud"></div>
+        <div class="bar-charts">
+            <canvas id="bar-chart"></canvas>
+            <canvas id="bar-chart2"></canvas>
         </div>
         <div class="dataBlock">
             <img class="dataBlockImg" src="../images/img1.png">
             <div class="dataBlockContent">
                 <h2 class="dataTitle">DATA</h2>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum sapiente error labore, natus, harum dicta eaque pariatur sunt nemo earum doloribus? Necessitatibus nisi alias aut aspernatur amet totam culpa voluptatem?</p>
+                <p>
+                    Through our project, we discovered that media outlets and electricity providers have distinct tonalities when it comes to discussing the origin of electricity in France. The media tends to take a critical stance and highlight the ecological impact of electricity production, while electricity providers focus more on promoting their efforts towards sustainability and environmental responsibility.
+                </p>
+                <p>
+                    By analyzing the grammar and vocabulary used in these articles, we were able to identify and compare the various approaches taken by different media outlets and electricity providers. This provided us with valuable insights into how these entities communicate with their respective audiences, and how they frame the issue of electricity production in France.
+                </p>
+                <p>
+                    The results of our analysis underscore the importance of understanding how media outlets and corporations use language to shape public discourse and perception. Such insights can be useful for policymakers, advocacy groups, and other stakeholders who are interested in promoting more informed and responsible public discourse around critical environmental issues such as electricity production.
+                </p>
             </div>
             </div>
         <footer>
@@ -70,6 +96,224 @@
             </div>
         </footer>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const data = {
+            "Fournisseurs": {
+                "CO2": 18,
+                "impact": 10,
+                "émission": 29,
+                "vert/verte": 12,
+                "électricité": 12,
+                "gaz": 46,
+                "polluer/pollution": 0,
+                "environnement": 20,
+                "chimique": 2
+            },
+            "Articles": {
+                "CO2": 61,
+                "impact": 15,
+                "émission": 63,
+                "vert/verte": 6,
+                "électricité": 83,
+                "gaz": 59,
+                "polluer/pollution": 21,
+                "environnement": 31,
+                "chimique": 2
+            }
+        };
 
+        const data2 = {
+            "Fournisseurs": {
+                "radioactif": 0,
+                "déchet": 4,
+                "carbone": 43,
+                "renouvelable": 4,
+                "climat": 25,
+                "plastique": 0,
+                "signe de négation": 1,
+                "graphiques/Tableaux": 1
+            },
+            "Articles": {
+                "radioactif": 4,
+                "déchet": 3,
+                "carbone": 56,
+                "renouvelable": 42,
+                "climat": 84,
+                "plastique": 0,
+                "signe de négation": 17,
+                "Graphiques/Tableaux": 8.2
+            }
+        };
+
+        const labels = Object.keys(data.Fournisseurs);
+        const fournisseursData = Object.values(data.Fournisseurs);
+        const articlesData = Object.values(data.Articles);
+        const labels2 = Object.keys(data2.Fournisseurs);
+        const fournisseursData2 = Object.values(data2.Fournisseurs);
+        const articlesData2 = Object.values(data2.Articles);
+        const options = {
+            options: {
+                indexAxis: 'y',
+                scales: {
+                    x: {
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    },
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false
+                    }
+                },
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        }
+
+        const ctx = document.getElementById('bar-chart').getContext('2d');
+        const chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Fournisseurs',
+                        data: fournisseursData,
+                        backgroundColor: '#FFBE85'
+                    },
+                    {
+                        label: 'Articles',
+                        data: articlesData,
+                        backgroundColor: '#21253C'
+                    }
+                ]
+            },
+            ...options
+        });
+
+        const ctx2 = document.getElementById('bar-chart2').getContext('2d');
+        const chart2 = new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: labels2,
+                datasets: [
+                    {
+                        label: 'Fournisseurs',
+                        data: fournisseursData2,
+                        backgroundColor: '#FFBE85'
+                    },
+                    {
+                        label: 'Articles',
+                        data: articlesData2,
+                        backgroundColor: '#21253C'
+                    }
+                ]
+            },
+            ...options
+        });
+</script>
+<script>
+    const cloud = {
+        "Fournisseurs": {
+            "CO2": 18,
+            "impact": 10,
+            "émission": 29,
+            "vert/verte": 12,
+            "électricité": 12,
+            "polluer/pollution": 0,
+            "environnement": 20,
+            "chimique": 2,
+            "radioactif": 0,
+            "déchet": 4,
+            "carbone": 43,
+            "renouvelable": 4,
+            "climat": 25,
+            "plastique": 0,
+            "gaz": 46,
+            "signe de négation": 1,
+            "graphiques/Tableaux": 1
+        },
+        "Articles": {
+            "CO2": 61,
+            "impact": 15,
+            "émission": 63,
+            "vert/verte": 6,
+            "électricité": 83,
+            "polluer/pollution": 21,
+            "environnement": 31,
+            "chimique": 2,
+            "radioactif": 4,
+            "déchet": 3,
+            "carbone": 56,
+            "renouvelable": 42,
+            "climat": 84,
+            "plastique": 0,
+            "gaz": 59,
+            "signe de négation": 17,
+            "Graphiques/Tableaux": 8.2
+        }
+    }
+
+    const combinedData = {};
+
+        for (const category in cloud) {
+            for (const word in cloud[category]) {
+                if (combinedData[word]) {
+                    combinedData[word] += cloud[category][word];
+                } else {
+                    combinedData[word] = cloud[category][word];
+                }
+            }
+        }
+
+        const wordCloudDiv = document.getElementById("word-cloud");
+
+        for (const word in combinedData) {
+            const count = combinedData[word];
+            const fontSize = 10 + count;
+
+            const wordSpan = document.createElement("span");
+            wordSpan.textContent = word;
+            wordSpan.style.fontSize = fontSize + "px";
+
+            wordCloudDiv.appendChild(wordSpan);
+        }
+</script>
+<script>
+    const doughnutData = {
+        labels: ['Négation', 'Positive'],
+        datasets: [
+            {
+                data: [40, 60],
+                backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(75, 192, 192, 0.2)'],
+                borderColor: ['rgba(255, 99, 132, 1)', 'rgba(75, 192, 192, 1)'],
+                borderWidth: 1
+            }
+        ]
+    };
+
+    const ctx3 = document.getElementById('doughnut-chart').getContext('2d');
+    const doughnutChart = new Chart(ctx3 , {
+        type: 'doughnut',
+        data: doughnutData,
+        options: {
+            plugins: {
+                legend: {
+                    position: 'top'
+                },
+                tooltip: {
+                    mode: 'index',
+                    intersect: false
+                }
+            },
+            responsive: true,
+            maintainAspectRatio: false
+        }
+    });
+</script>
 </body>
 </html>
