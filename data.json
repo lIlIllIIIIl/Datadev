@@ -16,7 +16,7 @@
         "climat": 25,
         "plastique": 0,
         "signe de négation": 1,
-        "graphiques/Tableaux": 1
+        "graphiques/Tableaux": 8.2
     },
     "Articles": {
         "CO2": 61,
@@ -35,6 +35,6 @@
         "climat": 84,
         "plastique": 0,
         "signe de négation": 17,
-        "Graphiques/Tableaux": 8.2
+        "Graphiques/Tableaux": 1
     }
 }
