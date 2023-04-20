@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="./styles/main.css">
 </head>
 <body>
     <div class="mainContainer">
@@ -33,7 +33,7 @@
             </div>
         </div>
         <div class="dataBlock">
-            <img class="dataBlockImg" src="../images/img1.png">
+            <img class="dataBlockImg" src="./images/img1.png">
             <div class="dataBlockContent">
                 <h2 class="dataTitle" id="data">DATA</h2>
                 <p>
@@ -44,19 +44,37 @@
                 </p>
             </div>
         </div>
-        <div>
+        <div class="doughnutContainer">
             <div class="doughnut">
-                <h4>Negative/positive reaction to the origin of electricity by the French media</h4>
+                <h4>Negative/positive reaction to the origin of electricity by the French media and suppliers</h4>
                 <canvas id="doughnut-chart"></canvas>
             </div>
+            <div class="input">
+                <div>
+                    <input type="radio" id="negation" name="option" checked>
+                    <label for="negation">Signe de négation</label>
+                </div>
+                <div>
+                    <input type="radio" id="graphiques" name="option">
+                    <label for="graphiques">Graphiques/Tableaux</label>
+                </div>
+            </div>
         </div>
-        <div class="word-cloud" id="word-cloud"></div>
+        <div class="cloudContainer">
+            <div class="input">
+                <input type="radio" id="fournisseurs" name="category" value="Fournisseurs" checked>
+                <label for="fournisseurs">Fournisseurs</label>
+                <input type="radio" id="articles" name="category" value="Articles">
+                <label for="articles">Articles</label>
+            </div>
+            <div class="word-cloud" id="word-cloud"></div>
+        </div>
         <div class="bar-charts">
             <canvas id="bar-chart"></canvas>
             <canvas id="bar-chart2"></canvas>
         </div>
         <div class="dataBlock">
-            <img class="dataBlockImg" src="../images/img1.png">
+            <img class="dataBlockImg" src="./images/img1.png">
             <div class="dataBlockContent">
                 <h2 class="dataTitle">DATA</h2>
                 <p>
@@ -132,7 +150,7 @@
                 "climat": 25,
                 "plastique": 0,
                 "signe de négation": 1,
-                "graphiques/Tableaux": 1
+                "graphiques/Tableaux": 8.2
             },
             "Articles": {
                 "radioactif": 4,
@@ -142,7 +160,7 @@
                 "climat": 84,
                 "plastique": 0,
                 "signe de négation": 17,
-                "Graphiques/Tableaux": 8.2
+                "Graphiques/Tableaux": 1
             }
         };
 
@@ -235,7 +253,7 @@
             "plastique": 0,
             "gaz": 46,
             "signe de négation": 1,
-            "graphiques/Tableaux": 1
+            "Graphiques/Tableaux": 8.2
         },
         "Articles": {
             "CO2": 61,
@@ -254,26 +272,19 @@
             "plastique": 0,
             "gaz": 59,
             "signe de négation": 17,
-            "Graphiques/Tableaux": 8.2
+            "Graphiques/Tableaux": 1
         }
     }
 
-    const combinedData = {};
 
-        for (const category in cloud) {
-            for (const word in cloud[category]) {
-                if (combinedData[word]) {
-                    combinedData[word] += cloud[category][word];
-                } else {
-                    combinedData[word] = cloud[category][word];
-                }
-            }
-        }
+    const wordCloudDiv = document.getElementById("word-cloud");
+    const radioButtons = document.getElementsByName("category");
 
-        const wordCloudDiv = document.getElementById("word-cloud");
+    function displayWordCloud(category) {
+        wordCloudDiv.innerHTML = "";
 
-        for (const word in combinedData) {
-            const count = combinedData[word];
+        for (const word in cloud[category]) {
+            const count = cloud[category][word];
             const fontSize = 10 + count;
 
             const wordSpan = document.createElement("span");
@@ -282,16 +293,33 @@
 
             wordCloudDiv.appendChild(wordSpan);
         }
+    }
+
+    radioButtons.forEach(radio => {
+        radio.addEventListener("change", () => {
+            displayWordCloud(radio.value);
+        });
+    });
+
+    displayWordCloud("Fournisseurs");
 </script>
 <script>
     const doughnutData = {
-        labels: ['Négation', 'Positive'],
+        labels: ['Fournisseurs', 'Articles'],
         datasets: [
             {
-                data: [40, 60],
-                backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(75, 192, 192, 0.2)'],
-                borderColor: ['rgba(255, 99, 132, 1)', 'rgba(75, 192, 192, 1)'],
-                borderWidth: 1
+                data: [1, 17],
+                backgroundColor: ['#FFBE85', '#21253C']
+            }
+        ]
+    };
+
+    const doughnutData2 = {
+        labels: ['Fournisseurs', 'Articles'],
+        datasets: [
+            {
+                data: [8.2, 1],
+                backgroundColor: ['#FFBE85', '#21253C']
             }
         ]
     };
@@ -314,6 +342,20 @@
             maintainAspectRatio: false
         }
     });
+
+    document.getElementById('negation').addEventListener('change', (event) => {
+            const isChecked = event.target.checked;
+            document.getElementById('graphiques').checked = false;
+            doughnutChart.data = doughnutData;
+            doughnutChart.update();
+        });
+
+        document.getElementById('graphiques').addEventListener('change', (event) => {
+            const isChecked = event.target.checked;
+            document.getElementById('negation').checked = false;
+            doughnutChart.data = doughnutData2;
+            doughnutChart.update();
+        });
 </script>
 </body>
 </html>

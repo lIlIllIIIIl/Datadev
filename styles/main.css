@@ -107,6 +107,19 @@ button:hover, a:hover{
     height: 640px;
 }
 
+.doughnutContainer {
+    display: flex;
+}
+
+.doughnutContainer .input {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2px 4% 4%;
+    border: 1px solid black;
+    width: 40%;
+}
+
 .doughnut {
     padding: 2px 4% 4%;
     border: 1px solid black;
@@ -116,13 +129,21 @@ button:hover, a:hover{
 .doughnut h4 {
     text-align: center;
 }
+.cloudContainer {
+    border: 1px solid black;
+    padding: 4%;
+}
+
+.cloudContainer .input {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
+}
 
 .word-cloud {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    border: 1px solid black;
-    padding: 4%;
 }
 
 .word-cloud span {
