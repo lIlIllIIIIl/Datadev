@@ -12,6 +12,7 @@ html{
     background: #E7E5E1;
     color: #000000;
     font-family: Basier;
+    scroll-behavior: smooth;
 }
 
 body{
